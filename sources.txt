@@ -1,0 +1,5 @@
+Источники:
+header-https://bootstrapious.com/
+
+доп. стэк:
+jquery 3.6, bootstrap 5, font-awesome
