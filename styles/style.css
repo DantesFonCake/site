@@ -1,3 +1,14 @@
-body{
-   background-color:#fce9dc;
+.bg-bg {
+    background-color: #FCF6B1;
+}
+
+.bg-content-field {
+    background-color: lightgrey;
+}
+
+@media(min-width: 576px) {
+    .bg-content-field {
+        box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.1),
+            3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    }
 }
