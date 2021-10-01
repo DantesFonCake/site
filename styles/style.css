@@ -1,9 +1,19 @@
+body{
+    min-height: 100vh;
+}
+main{
+    min-height: 100%;
+}
 .bg-bg {
     background-color: #FCF6B1;
 }
 
 .bg-content-field {
-    background-color: lightgrey;
+    background-color: lightgray;
+}
+
+.bg-footer{
+    background-color: darkgray;
 }
 
 @media(min-width: 576px) {
