@@ -3,7 +3,7 @@ Takes all available width
 Put your main between header and footer
 Main has to be .flex-fill
 -->
-
+<!DOCTYPE html>
 <body class="d-flex flex-column h-100 justify-content-end">
     <header>
         <nav class="navbar navbar-expand-lg fixed-top py-3 bg-navbar">
@@ -25,9 +25,36 @@ Main has to be .flex-fill
     </header>
     <!--Put main here-->
     <footer class="fluid-container bg-footer">
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <section class="links">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-5 col-lg-6 col-xl-5 mx-auto mb-4 ">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 7 xxx xxx xx xx</p>
 
+                    </div>
+                </div>
+            </div>
         </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="#">some copyright</a>
+        </div>
     </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
