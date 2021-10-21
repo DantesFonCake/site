@@ -15,19 +15,22 @@
         <h1>@Model.Data.Title</h1>
         <p class="post-meta">
             <span>
-                In <a href="@archive.Permalink/category/@Model.Data.Category.Slug">@Model.Data.Category.Title</a>
+                В <a href="@archive.Permalink/category/@Model.Data.Category.Slug">@Model.Data.Category.Title</a>
             </span>
+            @if (Model.Data.Tags.Count > 0)
+            {
             <span>
-                Tags
+                Тэги
                 @foreach (var tag in Model.Data.Tags)
                 {
                     <a href="@archive.Permalink/tag/@tag.Slug">#@tag.Slug</a>
                 }
             </span>
+            }
             @if (Model.Data.IsPublished)
             {
                 <span>
-                    Published @Model.Data.Published.Value.ToShortDateString()
+                    Опубликовано @Model.Data.Published.Value.ToShortDateString()
                 </span>
             }
             @if (Model.Data.EnableComments && Model.Data.CommentCount > 0)

@@ -8,6 +8,7 @@ using Piranha.AspNetCore.Identity.SQLite;
 using Piranha.AttributeBuilder;
 using Piranha.Data.EF.SQLite;
 using Piranha.Manager.Editor;
+using web1.Models.Blocks;
 
 namespace web1
 {
@@ -59,7 +60,8 @@ namespace web1
                 .AddAssembly(typeof(Startup).Assembly)
                 .Build()
                 .DeleteOrphans();
-
+            App.Blocks.Register<YoutubeBlock>();
+            App.MediaTypes.Documents.Add(".css", "text/css");
             // Configure Tiny MCE
             EditorConfig.FromFile("editorconfig.json");
 
