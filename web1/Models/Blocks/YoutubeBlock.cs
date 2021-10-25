@@ -28,12 +28,7 @@ namespace web1.Models.Blocks
 
         public override string GetTitle()
         {
-            if (!string.IsNullOrEmpty(VideoId))
-            {
-                return url;
-            }
-
-            return "No video id provided";
+            return !string.IsNullOrEmpty(VideoId) ? url : "No video id provided";
         }
     }
 }

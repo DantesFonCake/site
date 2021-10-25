@@ -12,15 +12,15 @@
 <header @(hasImage ? "class=has-image" : "") @(hasImage ? $"style=background-image:url({ @Url.Content(WebApp.Media.ResizeImage(Model.Data.PrimaryImage, 1920, 400)) })" : "")>
     <div class="dimmer"></div>
     <div class="container text-center">
-        <h1>@Model.Data.Title</h1>
+        <h3>@Model.Data.Title</h3>
         <p class="post-meta">
             <span>
-                В <a href="@archive.Permalink/category/@Model.Data.Category.Slug">@Model.Data.Category.Title</a>
+                Р’ <a href="@archive.Permalink/category/@Model.Data.Category.Slug">@Model.Data.Category.Title</a>
             </span>
             @if (Model.Data.Tags.Count > 0)
             {
             <span>
-                Тэги
+                РўСЌРіРё
                 @foreach (var tag in Model.Data.Tags)
                 {
                     <a href="@archive.Permalink/tag/@tag.Slug">#@tag.Slug</a>
@@ -30,7 +30,7 @@
             @if (Model.Data.IsPublished)
             {
                 <span>
-                    Опубликовано @Model.Data.Published.Value.ToShortDateString()
+                    РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ @Model.Data.Published.Value.ToShortDateString()
                 </span>
             }
             @if (Model.Data.EnableComments && Model.Data.CommentCount > 0)

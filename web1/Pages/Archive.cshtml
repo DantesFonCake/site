@@ -20,7 +20,7 @@
 <header @(hasImage ? "class=has-image" : "") @(hasImage ? $"style=background-image:url({ @Url.Content(WebApp.Media.ResizeImage(Model.Data.PrimaryImage, 1920, 400)) })" : "")>
     <div class="dimmer"></div>
     <div class="container text-center">
-        <h1>@Model.Data.Title</h1>
+        <h3>@Model.Data.Title</h3>
         @if (!string.IsNullOrWhiteSpace(Model.Data.Excerpt))
         {
             <div class="row justify-content-center">
@@ -61,12 +61,12 @@
                                 <h3>@post.Title</h3>
                                 <p class="post-meta">
                                     <span>
-                                        В <a href="@Model.Data.Permalink/category/@post.Category.Slug">@post.Category.Title</a>
+                                        Р’ <a href="@Model.Data.Permalink/category/@post.Category.Slug">@post.Category.Title</a>
                                     </span>
                                     @if(post.Tags.Count>0)
                                     {
                                     <span>
-                                        Тэги
+                                        РўСЌРіРё
                                         @foreach (var tag in post.Tags)
                                         {
                                             <a href="@Model.Data.Permalink/tag/@tag.Slug">#@tag.Slug</a>
@@ -76,7 +76,7 @@
                                     @if (post.IsPublished)
                                     {
                                         <span>
-                                            Опубликовано @post.Published.Value.ToShortDateString()
+                                            РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ @post.Published.Value.ToShortDateString()
                                         </span>
                                     }
                                     @if (post.EnableComments && post.CommentCount > 0)
@@ -87,7 +87,7 @@
                                     }
                                 </p>
                                 <p>@Html.Raw(post.Excerpt)</p>
-                                <a href="@post.Permalink" class="btn btn-primary">Читать дальше</a>
+                                <a href="@post.Permalink" class="btn btn-primary">Р§РёС‚Р°С‚СЊ РґР°Р»СЊС€Рµ</a>
                             </header>
                         </article>
                     </div>
@@ -107,13 +107,13 @@
                         <li class="page-item">
                             <a class="page-link" href="@BlogLink()/page/1">
                                 <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Предыдущая</span>
+                                <span class="sr-only">РџСЂРµРґС‹РґСѓС‰Р°СЏ</span>
                             </a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="@BlogLink()/page/@Math.Max(1, Model.Archive.CurrentPage - 1)">
                                 <span aria-hidden="true">&lsaquo;</span>
-                                <span class="sr-only">Предыдущая</span>
+                                <span class="sr-only">РџСЂРµРґС‹РґСѓС‰Р°СЏ</span>
                             </a>
                         </li>
                         @for (var n = 1; n <= Model.Archive.TotalPages; n++) {
@@ -122,13 +122,13 @@
                         <li class="page-item">
                             <a class="page-link" href="@BlogLink()/page/@Math.Min(Model.Archive.TotalPages, Model.Archive.CurrentPage + 1)">
                                 <span aria-hidden="true">&rsaquo;</span>
-                                <span class="sr-only">Следующая</span>
+                                <span class="sr-only">РЎР»РµРґСѓСЋС‰Р°СЏ</span>
                             </a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="@BlogLink()/page/@Model.Archive.TotalPages">
                                 <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Следующая</span>
+                                <span class="sr-only">РЎР»РµРґСѓСЋС‰Р°СЏ</span>
                             </a>
                         </li>
                     </ul>
