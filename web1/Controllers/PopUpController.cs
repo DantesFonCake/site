@@ -25,7 +25,6 @@ namespace web1.Controllers
             if (!string.IsNullOrEmpty(postid))
             {
                 StandardPost model = await _api.Posts.GetByIdAsync<StandardPost>(Guid.Parse(postid));
-
                 SinglePost<StandardPost> partialModel = new(_api, _loader) { Data = model };
                 return base.PartialView(partialModel);
             }
