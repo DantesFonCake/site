@@ -24,4 +24,11 @@
     <PackageReference Include="Piranha.Manager.TinyMCE" Version="9.1.0" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Update="piranha.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
