@@ -8,6 +8,7 @@ using Piranha.AspNetCore.Identity.SQLite;
 using Piranha.AttributeBuilder;
 using Piranha.Data.EF.SQLite;
 using Piranha.Manager.Editor;
+using System.IO;
 using web1.Models.Blocks;
 
 namespace web1
@@ -29,6 +30,7 @@ namespace web1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            System.Console.WriteLine(File.Open("./piranha.db",FileMode.Open,FileAccess.Read).Name);
             // Service setup
             services.AddPiranha(options =>
             {
