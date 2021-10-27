@@ -1,27 +1,40 @@
-﻿var modal = $("#popup-modal");
-var default_modal = $("#default-modal");
-console.log(default_modal);
+﻿var _cache = {};
+
+var modal = $("#modal");
+var modal_content = $("#popup-content");
+var default_modal = $("#popup-content .modal-body");
+modal.on("hide.bs.modal", function () {
+    $(this).find('.yt-block').each(function () {
+        this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    });
+});
 $(".map-popup-button").each(function () {
     var $this = $(this);
     $this.click(function () {
-        var request=$.get("serialized/" + $this.data("postid"))
-            .done(function (data)
-            {
-                default_modal.modal('hide');
-                $(".modal-backdrop").remove();
-                modal.empty();
-                modal.append(data);
-                var m = modal.children(".modal");
-                m.modal();
-                m.modal('show');
-            })
-            .fail(function (req,status)
-            {
-                console.log("Error: " + status);
-            });
-        modal.empty();
-        modal.append(default_modal);
-        default_modal.modal();
-        default_modal.modal('show');
+        var id = $this.data("postid");
+        if (!(id in _cache)) {
+
+            var request = $.get("serialized/" + id)
+                .done(function (data) {
+                    _cache[id] = data;
+                    repopulateModal(data);
+                })
+                .fail(function (req, status) {
+                    console.log("Error: " + status);
+                });
+            modal_content.empty();
+            modal_content.append(default_modal);
+            modal_content.modal("handleUpdate");
+
+        }
+        else {
+            repopulateModal(_cache[id]);
+        }
     });
 });
+
+function repopulateModal(data) {
+    modal_content.empty();
+    modal_content.append(data);
+    modal_content.modal("handleUpdate");
+}
