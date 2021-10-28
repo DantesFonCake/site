@@ -18,7 +18,7 @@ namespace web1.Models.Blocks
                 if (url != null)
                 {
                     var queryString = new System.Uri(url).Query;
-                    System.Collections.Specialized.NameValueCollection queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
+                    var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
                     VideoId = queryDictionary.Get("v");
                 }
             }

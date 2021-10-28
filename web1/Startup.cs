@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Piranha;
 using Piranha.AspNetCore.Identity.SQLite;
 using Piranha.AttributeBuilder;
@@ -45,12 +46,11 @@ namespace web1
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApi api, Piranha.Config config)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApi api, Config config)
         {
-            //if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            }
+
             config.CommentsEnabledForPosts = false;
             // Initialize Piranha
             App.Init(api);
