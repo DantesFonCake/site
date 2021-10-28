@@ -4,6 +4,7 @@
     ViewData["Title"] = !string.IsNullOrEmpty(Model.Data.MetaTitle) ? Model.Data.MetaTitle : Model.Data.Title;
 }
 @section head {
+    <link rel="stylesheet" href="~/assets/css/hren.css">
     @WebApp.MetaTags(Model.Data)
 }
 
@@ -15,22 +16,63 @@
 </header>
 
 <main>
-    <button class="map-popup-button" data-postid="@Model.Data.Post.Post?.Id" data-target="#modal" data-toggle="modal">My button</button>
-    <button class="map-popup-button" data-postid="@Model.Data.Post2.Post?.Id" data-target="#modal" data-toggle="modal">My button2</button>
-    
     <div id="popup-modal">
         <div class="modal fade" id="modal">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div id="popup-content" class="modal-content">
                     <div class="modal-body" id="popup-modal-body">
-                        <img src="~/assets/statics/img/loading.gif" width="50" class="rounded mx-auto d-block"/>
+                        <img src="~/assets/statics/img/loading.gif" width="50" class="rounded mx-auto d-block" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="block">
+        <div class="container">
+            <div class="map" id="panzoom-element">
+                <img src="~/assets/statics/img/map.png" width="1000" height="889" class="map-image" usemap="#simple">
+                @if (Model.Data.Buildings.Any())
+                {
+                    <map name="simple" id="map">
+                        @foreach (var building in Model.Data.Buildings)
+                        {
+                            <area data-toggle="modal" data-target="#modal" href="#" data-postid="@building.Post.Post.Id" shape="@building.ShapeName.Value" coords="@building.Coords.Value" class="@building.Name.Value map-popup-button" data-maphilight='{"neverOn":true,"stroke":false,"fillColor":"ff0000","fillOpacity":0.6}' title="@building.HumanName.Value" alt="@building.HumanName.Value">
+                        }
+                    </map>
+                }
+            </div>
+        </div>
+    </div>
+    @if (Model.Data.Buildings.Any())
+    {
+        <div class="block map-buttons">
+            <div class="container">
+                <div class="dropdown">
+                    <label class="dropbtn">Строения</label>
+                    <div class="dropdown-content">
+                        @foreach (var building in Model.Data.Buildings.GroupBy(p => p.Name.Value).Select(g => g.First()))
+                        {
+                            <div>
+                                <a>
+                                    <label class="switch">
+                                        <input class="map-switch" type="checkbox" value="@building.Name.Value">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </a>
+                                <p>@building.HumanName.Value</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </main>
 
 @section scripts {
     <script src="~/assets/js/post-popup.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.maphilight.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/maphilight.js"></script>
+    <script src="https://unpkg.com/@@panzoom/panzoom@4.4.2/dist/panzoom.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/panzoom.js"></script>
 }

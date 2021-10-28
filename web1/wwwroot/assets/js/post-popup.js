@@ -1,40 +1,41 @@
-﻿var _cache = {};
+﻿var _c = {};
 
-var modal = $("#modal");
-var modal_content = $("#popup-content");
-var default_modal = $("#popup-content .modal-body");
-modal.on("hide.bs.modal", function () {
+var m = $("#modal");
+var mc = $("#popup-content");
+var dm = $("#popup-content .modal-body");
+m.on("hide.bs.modal", function () {
     $(this).find('.yt-block').each(function () {
         this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     });
 });
 $(".map-popup-button").each(function () {
     var $this = $(this);
-    $this.click(function () {
-        var id = $this.data("postid");
-        if (!(id in _cache)) {
+    $this.click(function (e) {
+        //e.preventDefault();
+        var i = $this.data("postid");
+        if (!(i in _c)) {
 
-            var request = $.get("serialized/" + id)
+            var request = $.get("serialized/" + i)
                 .done(function (data) {
-                    _cache[id] = data;
-                    repopulateModal(data);
+                    _c[i] = data;
+                    rM(data);
                 })
                 .fail(function (req, status) {
                     console.log("Error: " + status);
                 });
-            modal_content.empty();
-            modal_content.append(default_modal);
-            modal_content.modal("handleUpdate");
-
+            mc.empty();
+            mc.append(dm);
+            mc.modal("handleUpdate");
         }
         else {
-            repopulateModal(_cache[id]);
+            rM(_c[i]);
         }
+        //mc.modal('show');
     });
 });
 
-function repopulateModal(data) {
-    modal_content.empty();
-    modal_content.append(data);
-    modal_content.modal("handleUpdate");
+function rM(data) {
+    mc.empty();
+    mc.append(data);
+    mc.modal("handleUpdate");
 }
