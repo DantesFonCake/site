@@ -46,10 +46,12 @@ namespace web1
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApi api, Config config)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApi api, Piranha.Config config)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+            }
 
             config.CommentsEnabledForPosts = false;
             // Initialize Piranha
