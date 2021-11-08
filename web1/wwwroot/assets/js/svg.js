@@ -4,6 +4,9 @@
     let svg_mapping = JSON.parse(temporary.text);
     temporary.remove();
     map_svg(svg, svg_mapping);
+    $(document).on('click', '#map-dropdown .dropdown-menu', function (e) {
+        e.stopPropagation();
+    });
 });
 
 function map_svg(svg, svg_maping) {
