@@ -4,7 +4,7 @@
     ViewData["Title"] = !string.IsNullOrEmpty(Model.Data.MetaTitle) ? Model.Data.MetaTitle : Model.Data.Title;
 }
 @section head {
-    <link rel="stylesheet" href="~/assets/css/hren.css">
+    <link rel="stylesheet" href="~/assets/css/svg.css">
     @WebApp.MetaTags(Model.Data)
 }
 
@@ -27,52 +27,39 @@
             </div>
         </div>
     </div>
+
     <div class="block">
-        <div class="container">
-            <div class="map" id="panzoom-element">
-                <img src="~/assets/statics/img/map.png" width="1000" height="889" class="map-image" usemap="#simple">
-                @if (Model.Data.Buildings.Any())
-                {
-                    <map name="simple" id="map">
+        <div class="container" id="map-container">
+            @if (Model.Data.Buildings.Any())
+            {
+                <div class="btn-group dropleft" id="map-dropdown">
+                    <button type="button" class="btn-sm btn-secondary dropdown-toggle responsive-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropleft
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
                         @foreach (var building in Model.Data.Buildings)
                         {
-                            <area data-toggle="modal" data-target="#modal" href="#" data-postid="@building.Post.Post.Id" shape="@building.ShapeName.Value" coords="@building.Coords.Value" class="@building.Name.Value map-popup-button" data-maphilight='{"neverOn":true,"stroke":false,"fillColor":"ff0000","fillOpacity":0.6}' title="@building.HumanName.Value" alt="@building.HumanName.Value">
-                        }
-                    </map>
-                }
-            </div>
-        </div>
-    </div>
-    @if (Model.Data.Buildings.Any())
-    {
-        <div class="block map-buttons">
-            <div class="container">
-                <div class="dropdown">
-                    <label class="dropbtn">Строения</label>
-                    <div class="dropdown-content">
-                        @foreach (var building in Model.Data.Buildings.GroupBy(p => p.Name.Value).Select(g => g.First()))
-                        {
-                            <div>
-                                <a>
-                                    <label class="switch">
-                                        <input class="map-switch" type="checkbox" value="@building.Name.Value">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </a>
-                                <p>@building.HumanName.Value</p>
-                            </div>
+                            if (string.IsNullOrWhiteSpace(building.SvgId.Value) || string.IsNullOrWhiteSpace(building.HumanName.Value))
+                                continue;
+                            <a id="@building.SvgId.Value" class="map-button dropdown-item">@building.HumanName.Value</a>
                         }
                     </div>
                 </div>
-            </div>
+            }
+            @{var file = Environment.WebRootFileProvider.GetFileInfo("/assets/statics/img/map.svg"); }
+            @Html.Raw(file.Exists ? System.IO.File.ReadAllText(file.PhysicalPath) : "Произошла ошибка: карта не найдена")
         </div>
-    }
+    </div>
 </main>
 
 @section scripts {
-    <script src="~/assets/js/post-popup.js"></script>
-    <script type="text/javascript" src="~/assets/js/jquery.maphilight.min.js"></script>
-    <script type="text/javascript" src="~/assets/js/maphilight.js"></script>
     <script src="https://unpkg.com/@@panzoom/panzoom@4.4.2/dist/panzoom.min.js"></script>
     <script type="text/javascript" src="~/assets/js/panzoom.js"></script>
+    <script id="temporary" type="application/json">
+        @Json.Serialize(Model.Data.Buildings
+                         .Where(x=>!string.IsNullOrWhiteSpace(x.SvgId.Value)&&!string.IsNullOrWhiteSpace(x.HumanName.Value))
+                         .ToDictionary(x => x.SvgId.Value, x => new { postid = x.Post.Id, title = x.HumanName.Value }))
+    </script>
+    <script type="text/javascript" src="~/assets/js/svg.js"></script>
+    <script src="~/assets/js/post-popup.js"></script>
 }

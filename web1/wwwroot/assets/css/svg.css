@@ -1,0 +1,29 @@
+#map-container {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    max-width: 1030px;
+    width: 80%;
+    height:fit-content;
+}
+#map-dropdown {
+    position: absolute;
+    right:0;
+    z-index:10;
+}
+.hilighted {
+    fill: yellow;
+    fill-opacity: 1;
+}
+
+.map-button.dropdown-item.active {
+    background-color: #459fff;
+}
+
+.map-button.dropdown-item {
+    border-top: solid 0.2px lightgray;
+}
+
+.map-button.dropdown-item:last-child{
+    border-bottom: solid 0.2px lightgray;
+}
