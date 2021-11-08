@@ -8,12 +8,18 @@
 }
 #map-dropdown {
     position: absolute;
-    right:0;
-    z-index:10;
+    right: 0;
+    z-index: 10;
 }
+
+.dropdown-menu-right {
+    max-height: 200px;
+    overflow-y: auto
+}
+
 .hilighted {
-    fill: yellow;
-    fill-opacity: 1;
+    fill: red;
+    fill-opacity: 0.6;
 }
 
 .map-button.dropdown-item.active {
