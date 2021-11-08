@@ -4,13 +4,48 @@
     padding: 0;
     max-width: 1030px;
     width: 80%;
-    height:fit-content;
+    height: fit-content;
 }
-#map-dropdown {
-    position: absolute;
-    right:0;
-    z-index:10;
+
+    #map-container #map-dropdown {
+        position: absolute;
+        right: 0;
+        z-index: 10;
+    }
+
+    #map-container svg.no-pan {
+        cursor: default !important;
+    }
+
+    #map-container .map-controls {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -moz-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+        z-index: 10;
+    }
+
+.map-controls > input {
 }
+
+#map-container .map-controls button {
+    border: solid #007bff;
+}
+
+#map-container .map-controls #map-pan:not(.active) {
+    background-color: transparent;
+    color: #007bff;
+}
+
 .hilighted {
     fill: yellow;
     fill-opacity: 1;
@@ -24,6 +59,6 @@
     border-top: solid 0.2px lightgray;
 }
 
-.map-button.dropdown-item:last-child{
-    border-bottom: solid 0.2px lightgray;
-}
+    .map-button.dropdown-item:last-child {
+        border-bottom: solid 0.2px lightgray;
+    }
