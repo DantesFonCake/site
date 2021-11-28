@@ -14,7 +14,7 @@ namespace web1.Models.SiteTypes
         public StringField NavTitle { get; set; }
 
         [Region(Title = "Footer", Display = RegionDisplayMode.Setting)]
-        public IList<HtmlField> FooterContents { get; set; }
+        public TextField FooterContents { get; set; }
 
         [Region(Title = "Additional CSS", Display = RegionDisplayMode.Setting)]
         public IList<DocumentField> CssList { get; set; }

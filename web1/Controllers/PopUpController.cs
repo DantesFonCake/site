@@ -41,7 +41,7 @@ namespace web1.Controllers
             }
             catch
             {
-                partialModel =await GetFallback();
+                partialModel = await GetFallback();
             }
 
             return PartialView(partialModel);
