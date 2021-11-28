@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>03bbcc7c-5930-401c-8fc1-3c5feeed388e</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
-      <LangVersion>9</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -61,18 +60,18 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
-    <PackageReference Include="Piranha" Version="9.2.0" />
-    <PackageReference Include="Piranha.AspNetCore" Version="9.2.0" />
-    <PackageReference Include="Piranha.AspNetCore.Identity.SQLite" Version="9.2.0" />
-    <PackageReference Include="Piranha.AttributeBuilder" Version="9.2.0" />
-    <PackageReference Include="Piranha.Data.EF" Version="9.2.0" />
-    <PackageReference Include="Piranha.Data.EF.SQLite" Version="9.2.0" />
-    <PackageReference Include="Piranha.ImageSharp" Version="9.2.0" />
-    <PackageReference Include="Piranha.Local.FileStorage" Version="9.2.0" />
-    <PackageReference Include="Piranha.Manager" Version="9.2.0" />
-    <PackageReference Include="Piranha.Manager.LocalAuth" Version="9.2.0" />
-    <PackageReference Include="Piranha.Manager.TinyMCE" Version="9.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Piranha" Version="10.0.0" />
+    <PackageReference Include="Piranha.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Piranha.AspNetCore.Identity.SQLite" Version="10.0.0" />
+    <PackageReference Include="Piranha.AttributeBuilder" Version="10.0.0" />
+    <PackageReference Include="Piranha.Data.EF" Version="10.0.0" />
+    <PackageReference Include="Piranha.Data.EF.SQLite" Version="10.0.0" />
+    <PackageReference Include="Piranha.ImageSharp" Version="10.0.0" />
+    <PackageReference Include="Piranha.Local.FileStorage" Version="10.0.0" />
+    <PackageReference Include="Piranha.Manager" Version="10.0.0" />
+    <PackageReference Include="Piranha.Manager.LocalAuth" Version="10.0.0" />
+    <PackageReference Include="Piranha.Manager.TinyMCE" Version="10.0.0" />
   </ItemGroup>
 
 
