@@ -8,58 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="additional\quest\**" />
-    <Compile Remove="additional\rivermap\**" />
-    <Content Remove="additional\quest\**" />
-    <Content Remove="additional\rivermap\**" />
-    <EmbeddedResource Remove="additional\quest\**" />
-    <EmbeddedResource Remove="additional\rivermap\**" />
-    <None Remove="additional\quest\**" />
-    <None Remove="additional\rivermap\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\assets\additional\1773-map\.git" />
-    <Content Remove="wwwroot\assets\additional\1773-map\index.html" />
-    <Content Remove="wwwroot\assets\additional\1773-map\info.txt" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map.js" />
-    <Content Remove="wwwroot\assets\additional\1773-map\modal.css" />
-    <Content Remove="wwwroot\assets\additional\1773-map\modal.js" />
-    <Content Remove="wwwroot\assets\additional\1773-map\README.md" />
-    <Content Remove="wwwroot\assets\additional\1773-map\style.css" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\back.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\back2.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\blessrng.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat(new).svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat2.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat3.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat4.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat5.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\boat6.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\doplogo.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\dotnew.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\info.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\logo.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\logo1.png" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\pin.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\pipka.png" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\river.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\river1.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\river2.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\river3.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\sdsadasd.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\side_river.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\side_river2.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\time.svg" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\вода.png" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\земля.png" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\Карта2.png" />
-    <Content Remove="wwwroot\assets\additional\1773-map\map\точка.png" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Piranha" Version="10.0.0" />
     <PackageReference Include="Piranha.AspNetCore" Version="10.0.0" />
@@ -83,11 +31,9 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\assets\additional\1773-map\.git" />
     <None Include="wwwroot\assets\additional\1773-map\info.txt" />
     <None Include="wwwroot\assets\additional\1773-map\map.js" />
     <None Include="wwwroot\assets\additional\1773-map\modal.css" />
-    <None Include="wwwroot\assets\additional\1773-map\README.md" />
     <None Include="wwwroot\assets\additional\1773-map\style.css" />
     <None Include="wwwroot\assets\additional\1773-map\map\back.svg" />
     <None Include="wwwroot\assets\additional\1773-map\map\back2.svg" />
