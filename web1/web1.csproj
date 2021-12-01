@@ -29,41 +29,4 @@
     </None>
   </ItemGroup>
 
-
-  <ItemGroup>
-    <None Include="wwwroot\assets\additional\1773-map\info.txt" />
-    <None Include="wwwroot\assets\additional\1773-map\map.js" />
-    <None Include="wwwroot\assets\additional\1773-map\modal.css" />
-    <None Include="wwwroot\assets\additional\1773-map\style.css" />
-    <None Include="wwwroot\assets\additional\1773-map\map\back.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\back2.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\blessrng.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat(new).svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat2.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat3.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat4.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat5.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\boat6.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\doplogo.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\dotnew.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\info.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\logo.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\logo1.png" />
-    <None Include="wwwroot\assets\additional\1773-map\map\pin.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\pipka.png" />
-    <None Include="wwwroot\assets\additional\1773-map\map\river.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\river1.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\river2.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\river3.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\sdsadasd.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\side_river.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\side_river2.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\time.svg" />
-    <None Include="wwwroot\assets\additional\1773-map\map\вода.png" />
-    <None Include="wwwroot\assets\additional\1773-map\map\земля.png" />
-    <None Include="wwwroot\assets\additional\1773-map\map\Карта2.png" />
-    <None Include="wwwroot\assets\additional\1773-map\map\точка.png" />
-  </ItemGroup>
-
 </Project>

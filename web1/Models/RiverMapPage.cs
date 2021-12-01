@@ -7,5 +7,4 @@ namespace web1.Models;
 [ContentTypeRoute(Title = "Default", Route = "/rivermap")]
 public class RiverMapPage : Page<RiverMapPage>
 {
-
 }

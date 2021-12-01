@@ -1,7 +1,7 @@
-﻿@page "/rivermap"
-@model SinglePage<RiverMapPage>
+﻿@page "/quest"
+@model SinglePage<QuestPage>
 @{
-    var directoryPath = "/assets/additional/1733-map";
+    var directoryPath = "/assets/additional/1733-quest";
 
     ViewData["Title"] = !string.IsNullOrEmpty(Model.Data.MetaTitle) ? Model.Data.MetaTitle : Model.Data.Title;
     var mainFile = Environment.WebRootFileProvider.GetFileInfo($"{directoryPath}/index.html");
@@ -13,9 +13,8 @@
     @Html.Raw(headFile.Exists ? System.IO.File.ReadAllText(headFile.PhysicalPath) : string.Empty)
     <link rel="stylesheet" href="@($"{directoryPath}/style.css")">
 }
-@Html.Raw(mainFile.Exists ? System.IO.File.ReadAllText(mainFile.PhysicalPath) : "Произошла ошибка: карта не найдена")
+@Html.Raw(mainFile.Exists ? System.IO.File.ReadAllText(mainFile.PhysicalPath) : "Произошла ошибка: страница не найдена")
 @section scripts {
     @Html.Raw(scriptsFile.Exists ? System.IO.File.ReadAllText(scriptsFile.PhysicalPath) : string.Empty)
-    <script src="@($"{directoryPath}/map.js")"></script>
+    <script src="@($"{directoryPath}/quest.js")"></script>
 }
-
