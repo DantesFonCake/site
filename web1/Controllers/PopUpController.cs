@@ -2,8 +2,10 @@
 using Piranha;
 using Piranha.AspNetCore.Models;
 using Piranha.AspNetCore.Services;
+using Piranha.Extend;
+using Piranha.Extend.Blocks;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using web1.Models;
 
@@ -13,14 +15,12 @@ public class PopUpController : Controller
 {
     private readonly IApi _api;
     private readonly IModelLoader _loader;
-    private readonly IDb _db;
     private StandardPost _fallbackPost;
 
-    public PopUpController(IApi api, IModelLoader loader, IDb db)
+    public PopUpController(IApi api, IModelLoader loader)
     {
         _api = api;
         _loader = loader;
-        _db = db;
     }
 
     [Route("/serialized/{postid?}")]
@@ -32,16 +32,19 @@ public class PopUpController : Controller
             if (!string.IsNullOrEmpty(postid) || postid != Guid.Empty.ToString())
             {
                 var model = await _api.Posts.GetByIdAsync<StandardPost>(Guid.Parse(postid));
-                partialModel = GetPartial(model);
+                if (model == null)
+                    partialModel = GetFallback();
+                else
+                    partialModel = GetPartial(model);
             }
             else
             {
-                partialModel = await GetFallback();
+                partialModel = GetFallback();
             }
         }
         catch
         {
-            partialModel = await GetFallback();
+            partialModel = GetFallback();
         }
 
         return PartialView(partialModel);
@@ -52,15 +55,23 @@ public class PopUpController : Controller
         return new(_api, _loader) { Data = post };
     }
 
-    private async Task<SinglePost<StandardPost>> GetFallback()
+    private SinglePost<StandardPost> GetFallback()
     {
         if (_fallbackPost is null)
         {
-            var fallbackId = _db.Posts.Where(x => x.Category.Title == "error").First(x => x.Tags.Select(x => x.Tag.Title).Contains("postnotfoundfallback")).Id;
-            _fallbackPost = await _api.Posts.GetByIdAsync<StandardPost>(fallbackId);
+            var contents = new HtmlBlock
+            {
+                Body = "Произошла ошибка! Мы не смогли найти запрошенные данные."
+            };
+            var post = new StandardPost
+            {
+                Title = "Произошла ошибка!",
+                Blocks = new List<Block>() { contents }
+            };
+
+            _fallbackPost = post;
         }
 
-        SinglePost<StandardPost> partialFallback = new(_api, _loader) { Data = _fallbackPost };
-        return partialFallback;
+        return GetPartial(_fallbackPost);
     }
 }
