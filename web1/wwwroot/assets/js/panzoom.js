@@ -20,6 +20,9 @@
         panzoom.zoomOut(zoomoptions);
         zoomrange.value = panzoom.getScale();
     });
+    zoomout.addEventListener('panzoomzoom', function () {
+        zoomrange.value = panzoom.getScale();
+    });
     zoomrange.addEventListener('input', (event) => {
         panzoom.zoom(event.target.valueAsNumber)
     });
