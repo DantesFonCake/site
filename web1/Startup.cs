@@ -64,6 +64,8 @@ public class Startup
             .Build()
             .DeleteOrphans();
         App.Blocks.Register<YoutubeBlock>();
+        App.Blocks.Register<ActionBlock>();
+        App.Blocks.Register<EventBlock>();
         App.MediaTypes.Documents.Add(".css", "text/css");
         // Configure Tiny MCE
         EditorConfig.FromFile("editorconfig.json");

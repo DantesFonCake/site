@@ -13,9 +13,32 @@
     @Html.Raw(headFile.Exists ? System.IO.File.ReadAllText(headFile.PhysicalPath) : string.Empty)
     <link rel="stylesheet" href="@($"{directoryPath}/style.css")">
 }
+<div id="popup-modal">
+        <div class="modal fade" id="modal">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div id="popup-content" class="modal-content">
+                    <div class="modal-body" id="popup-modal-body">
+                        <img src="~/assets/statics/img/loading.gif" width="50" class="rounded mx-auto d-block" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @Html.Raw(mainFile.Exists ? System.IO.File.ReadAllText(mainFile.PhysicalPath) : "Произошла ошибка: карта не найдена")
 @section scripts {
     @Html.Raw(scriptsFile.Exists ? System.IO.File.ReadAllText(scriptsFile.PhysicalPath) : string.Empty)
+    <script id="temporary" type="application/json">
+        @Json.Serialize(Model.Data.Cities
+                         .Where(x=>!string.IsNullOrWhiteSpace(x.Name))
+                         .Select((x,i)=>
+                             new{name=x.Name.Value,
+                                 text_position=new[]{x.XText.Value,x.YText.Value},
+                                 position=x.Position.Value,
+                                 postid=x.Post.HasValue?x.Post.Id:Guid.Empty,
+                                 id=i
+                             }).ToArray())
+    </script>
+    <script src="~/assets/js/post-popup.js"></script>
     <script src="@($"{directoryPath}/map.js")"></script>
 }
 
