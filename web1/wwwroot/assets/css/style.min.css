@@ -4,7 +4,8 @@
 
 body {
     padding-top: 3.5rem;
-    font-family: Lato,sans-serif
+    font-family: Lato,sans-serif;
+    background: url("../statics/img/poster-background.jpg") no-repeat fixed center;
 }
 
 main {
@@ -24,7 +25,15 @@ a {
     }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Raleway,sans-serif
+    font-family: Petro,sans-serif;
+    color: #A62116;
+}
+
+hr {
+    background: url("../statics/img/line.png") no-repeat center;
+    border: none;
+    height: 20px;
+    background-size: 350px;
 }
 
 blockquote {
@@ -35,11 +44,50 @@ blockquote {
     width: 80%
 }
 
+.archive div.row.article {
+    background-color: rgba(196,196,196,0.5);
+    margin-top: 10px;
+}
+
+.col-md, div.text-block .container, .post div.html-block .container {
+    background-color: rgba(196,196,196,0.5)
+}
+
+.modal-body .col-md {
+    background-color: transparent
+}
+
+#top-point {
+    position: absolute;
+    top: 0.7%;
+    left: 1%;
+    transform: rotate(180deg);
+    width: 130px;
+    height: 130px;
+}
+
+#bottom-point {
+    position: sticky;
+    top: 100%;
+    left: 100%;
+    width: 130px;
+    height: 130px;
+}
+
 .navbar-brand small {
-    font-family: Lato,sans-serif;
+    font-family: Petro;
     font-size: 75%;
     font-weight: 400;
-    margin-left: .5rem
+    margin-left: .5rem;
+    color: white
+}
+
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
 }
 
 .lead {
@@ -62,10 +110,10 @@ blockquote {
 }
 
 .navbar.fixed-top {
-    background: #fff;
+    background: #A62116;
     border-bottom: 1px solid #ddd;
-    font-family: Raleway,sans-serif;
-    box-shadow: 0 0 2rem rgba(0,0,0,.15)
+    font-family: Petro,sans-serif;
+    box-shadow: 0 0 2rem rgba(0,0,0,.15);
 }
 
     .navbar.fixed-top .navbar-nav {
@@ -75,7 +123,7 @@ blockquote {
     }
 
         .navbar.fixed-top .navbar-nav .active a {
-            color: #f94c3b
+            color: #FFC245
         }
 
     .navbar.fixed-top .navbar-toggler {
@@ -87,7 +135,7 @@ blockquote {
             height: 1em
         }
 
-@media (max-width:767.98px) {
+@media (max-width:767px) {
     .navbar.fixed-top .container {
         max-width: 100%
     }
@@ -96,7 +144,8 @@ blockquote {
 header {
     background-position: 50% 50%;
     background-size: cover;
-    position: relative
+    position: relative;
+    color: #A62116
 }
 
     header .container {
@@ -158,8 +207,13 @@ header {
 }
 
 .post-meta {
-    font-size: .875rem
+    font-size: .875rem;
+    color: black
 }
+
+    .post-meta a {
+        color: #356735
+    }    
 
     .post-meta span:not(:last-child)::after {
         content: "\25C6";
@@ -168,7 +222,8 @@ header {
     }
 
 .archive article {
-    padding-bottom: 1rem
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .comments .alert {
@@ -189,4 +244,9 @@ header {
 .page-item.active .page-link {
     background: #f94c3b;
     border-color: #f94c3b
+}
+
+@font-face {
+    font-family: "Petro";
+    src: url("../statics/fonts/Petro.ttf");
 }

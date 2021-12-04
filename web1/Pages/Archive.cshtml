@@ -44,7 +44,7 @@
     <div class="container">
         @for (var n = 0; n < posts; n += 2)
         {
-            <div class="row">
+            <div class="row article">
                 @for (var i = n; i < Math.Min(posts, n + 2); i++)
                 {
                     var post = Model.Archive.Posts[i];
@@ -86,9 +86,9 @@
                                         </span>
                                     }
                                 </p>
+                            </header>
                                 <p>@Html.Raw(post.Excerpt)</p>
                                 <a href="@post.Permalink" class="btn btn-primary">Читать дальше</a>
-                            </header>
                         </article>
                     </div>
                     @if (i == 0)
