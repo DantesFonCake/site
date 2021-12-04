@@ -28,7 +28,6 @@ $(document).ready(function () {
             else {
                 rM(_c[i]);
             }
-            //mc.modal('show');
         });
     });
 

@@ -11,7 +11,7 @@
 @section head {
     @WebApp.MetaTags(Model.Data)
     @Html.Raw(headFile.Exists ? System.IO.File.ReadAllText(headFile.PhysicalPath) : string.Empty)
-    <link rel="stylesheet" href="@($"{directoryPath}/style.css")">
+    <link rel="stylesheet" href="@($"{directoryPath}/style.min.css")">
 }
 <div id="popup-modal">
         <div class="modal fade" id="modal">
@@ -39,6 +39,6 @@
                              }).ToArray())
     </script>
     <script src="~/assets/js/post-popup.js"></script>
-    <script src="@($"{directoryPath}/map.js")"></script>
+    <script src="@($"{directoryPath}/map.min.js")"></script>
 }
 

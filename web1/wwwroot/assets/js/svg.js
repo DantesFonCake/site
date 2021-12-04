@@ -24,7 +24,7 @@ function map_svg(svg, svg_maping) {
         title.textContent = svg_maping[id]["title"];
         area.classList.add("map-area");
         area.dataset.postid = svg_maping[id]["postid"];
-        area.dataset.target = "#modal";
-        area.dataset.toggle = "modal";
+        area.dataset.bsTarget = "#modal";
+        area.dataset.bsToggle = "modal";
     }
 }

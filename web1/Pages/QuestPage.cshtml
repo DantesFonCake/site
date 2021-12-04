@@ -11,7 +11,7 @@
 @section head {
     @WebApp.MetaTags(Model.Data)
     @Html.Raw(headFile.Exists ? System.IO.File.ReadAllText(headFile.PhysicalPath) : string.Empty)
-    <link rel="stylesheet" href="@($"{directoryPath}/style.css")">
+    <link rel="stylesheet" href="@($"{directoryPath}/style.min.css")">
 }
 @Html.Raw(mainFile.Exists ? System.IO.File.ReadAllText(mainFile.PhysicalPath) : "Произошла ошибка: страница не найдена")
 @section scripts {
@@ -19,5 +19,5 @@
     <script id="temporary" type="application/json">
         @Json.Serialize(Model.Data.Serialize())
     </script>
-    <script src="@($"{directoryPath}/quest.js")"></script>
+    <script src="@($"{directoryPath}/quest.min.js")"></script>
 }

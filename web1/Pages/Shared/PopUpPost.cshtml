@@ -1,8 +1,9 @@
 ﻿@model SinglePost<StandardPost>
                 <div class="modal-body text-center" id="popup-modal-body">
-                    <h3>@Model.Data.Title</h3>
                     <img id="top-point" src="~/assets/statics/img/point.png">
                     <img id="bottom-point" src="~/assets/statics/img/point.png">
+                    <div class="true-content">
+                    <h3>@Model.Data.Title</h3>
                     @foreach (var block in Model.Data.Blocks)
                     {
                         <div class="block @block.CssName()">
@@ -11,5 +12,6 @@
                             </div>
                         </div>
                     }
+                    </div>
                 </div>
         
