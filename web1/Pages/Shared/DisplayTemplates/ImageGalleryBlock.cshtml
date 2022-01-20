@@ -11,7 +11,7 @@
     <ol class="carousel-indicators">
         @for (var n = 0; n < images.Count; n++)
         {
-            <li data-target="#@unique" data-slide-to="@n" class="@(n == 0 ? "active" : "")"></li>
+            <li data-bs-target="#@unique" data-bs-slide-to="@n" class="@(n == 0 ? "active" : "")"></li>
         }
     </ol>
     <div class="carousel-inner">
@@ -22,12 +22,12 @@
             </div>
         }
     </div>
-    <a class="carousel-control-prev" href="#@unique" role="button" data-bs-slide="prev">
+    <a class="carousel-control-prev" data-bs-target="#@unique" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Пред.</span>
+        <span class="sr-only">РџСЂРµРґ.</span>
     </a>
-    <a class="carousel-control-next" href="#@unique" role="button" data-bs-slide="next">
+    <a class="carousel-control-next" data-bs-target="#@unique" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">След.</span>
+        <span class="sr-only">РЎР»РµРґ.</span>
     </a>
 </div>

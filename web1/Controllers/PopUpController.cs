@@ -9,69 +9,70 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using web1.Models;
 
-namespace web1.Controllers;
-
-public class PopUpController : Controller
+namespace web1.Controllers
 {
-    private readonly IApi _api;
-    private readonly IModelLoader _loader;
-    private StandardPost _fallbackPost;
-
-    public PopUpController(IApi api, IModelLoader loader)
+    public class PopUpController : Controller
     {
-        _api = api;
-        _loader = loader;
-    }
+        private readonly IApi _api;
+        private readonly IModelLoader _loader;
+        private StandardPost _fallbackPost;
 
-    [Route("/serialized/{postid?}")]
-    public async Task<IActionResult> PopUpPost(Guid id, string postid = null)
-    {
-        SinglePost<StandardPost> partialModel;
-        try
+        public PopUpController(IApi api, IModelLoader loader)
         {
-            if (!string.IsNullOrEmpty(postid) || postid != Guid.Empty.ToString())
+            _api = api;
+            _loader = loader;
+        }
+
+        [Route("/serialized/{postid?}")]
+        public async Task<IActionResult> PopUpPost(Guid id, string postid = null)
+        {
+            SinglePost<StandardPost> partialModel;
+            try
             {
-                var model = await _api.Posts.GetByIdAsync<StandardPost>(Guid.Parse(postid));
-                if (model == null)
-                    partialModel = GetFallback();
+                if (!string.IsNullOrEmpty(postid) || postid != Guid.Empty.ToString())
+                {
+                    var model = await _api.Posts.GetByIdAsync<StandardPost>(Guid.Parse(postid));
+                    if (model == null)
+                        partialModel = GetFallback();
+                    else
+                        partialModel = GetPartial(model);
+                }
                 else
-                    partialModel = GetPartial(model);
+                {
+                    partialModel = GetFallback();
+                }
             }
-            else
+            catch
             {
                 partialModel = GetFallback();
             }
+
+            return PartialView(partialModel);
         }
-        catch
+
+        private SinglePost<StandardPost> GetPartial(StandardPost post)
         {
-            partialModel = GetFallback();
+            return new(_api, _loader) { Data = post };
         }
 
-        return PartialView(partialModel);
-    }
-
-    private SinglePost<StandardPost> GetPartial(StandardPost post)
-    {
-        return new(_api, _loader) { Data = post };
-    }
-
-    private SinglePost<StandardPost> GetFallback()
-    {
-        if (_fallbackPost is null)
+        private SinglePost<StandardPost> GetFallback()
         {
-            var contents = new HtmlBlock
+            if (_fallbackPost is null)
             {
-                Body = "Произошла ошибка! Мы не смогли найти запрошенные данные."
-            };
-            var post = new StandardPost
-            {
-                Title = "Произошла ошибка!",
-                Blocks = new List<Block>() { contents }
-            };
+                var contents = new HtmlBlock
+                {
+                    Body = "Произошла ошибка! Мы не смогли найти запрошенные данные."
+                };
+                var post = new StandardPost
+                {
+                    Title = "Произошла ошибка!",
+                    Blocks = new List<Block>() { contents }
+                };
 
-            _fallbackPost = post;
+                _fallbackPost = post;
+            }
+
+            return GetPartial(_fallbackPost);
         }
-
-        return GetPartial(_fallbackPost);
     }
 }

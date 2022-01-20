@@ -1,35 +1,39 @@
 ﻿using Piranha.Extend;
 using Piranha.Extend.Fields;
 
-namespace web1.Models.Blocks;
-
-[BlockGroupType(Name = "Question", Category = "Quest", Icon = "fas fa-question", IsGeneric = true)]
-[BlockItemType(Type = typeof(ActionBlock))]
-public class EventBlock : BlockGroup
+namespace web1.Models.Blocks
 {
-    [Field(Description = "Номер этого события", Title = "Номер")]
-    public NumberField EventId { get; set; }
-
-    [Field(Description = "Текст", Title = "Событие")]
-    public HtmlField Title { get; set; }
-
-    public override string GetTitle()
+    [BlockGroupType(Name = "Question", Category = "Quest", Icon = "fas fa-question", IsGeneric = true)]
+    [BlockItemType(Type = typeof(ActionBlock))]
+    public class EventBlock : BlockGroup
     {
-        return Title;
-    }
-}
+        [Field(Title = "Номер")]
+        [FieldDescription("Номер этого события")]
+        public NumberField EventId { get; set; }
 
-[BlockType(Name = "Answer", Category = "Quest", Icon = "fas fa-exclamation", IsGeneric = true)]
-public class ActionBlock : Block
-{
-    public override string GetTitle()
-    {
-        return Text;
+        [Field(Title = "Событие")]
+        [FieldDescription("Текст")]
+        public HtmlField Title { get; set; }
+
+        public override string GetTitle()
+        {
+            return Title;
+        }
     }
 
-    [Field(Description = "Номер слудующего события", Title = "Следующее")]
-    public NumberField NextId { get; set; }
+    [BlockType(Name = "Answer", Category = "Quest", Icon = "fas fa-exclamation", IsGeneric = true)]
+    public class ActionBlock : Block
+    {
+        public override string GetTitle()
+        {
+            return Text;
+        }
 
-    [Field(Title = "Вариант ответа")]
-    public HtmlField Text { get; set; }
+        [Field(Title = "Следующее")]
+        [FieldDescription("Номер следующего события")]
+        public NumberField NextId { get; set; }
+
+        [Field(Title = "Вариант ответа")]
+        public HtmlField Text { get; set; }
+    }
 }
